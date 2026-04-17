@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, HeroSignalLines, HeroWaveField, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
+import { fadeUp, HeroSignalLines, HeroWaveField, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid, TechWaveMesh } from "@/app/components/ui";
 
 export default function ServicesPage() {
   const services = [
@@ -54,10 +54,11 @@ export default function ServicesPage() {
 
   return (
     <PageShell>
-      <section className="relative overflow-hidden px-6 pb-24 pt-10 lg:px-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-6 pb-24 pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
         <HeroWaveField className="opacity-70" />
         <HeroSignalLines className="opacity-45" />
+        <TechWaveMesh className="opacity-45" />
         <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.p variants={fadeUp} className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
@@ -74,7 +75,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white px-6 py-24 lg:px-10">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             eyebrow="Core Offerings"
@@ -102,7 +103,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <SectionHeader

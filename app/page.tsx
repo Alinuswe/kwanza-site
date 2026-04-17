@@ -1,10 +1,18 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const navItems = ["Home", "About", "Services", "Industries", "Capabilities", "Contact"];
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "#services" },
+  { label: "Industries", href: "#industries" },
+  { label: "Capabilities", href: "#capabilities" },
+  { label: "Contact", href: "#contact" },
+];
 
 const services = [
   {
@@ -69,40 +77,6 @@ const stagger = {
   },
 };
 
-function BrandGlow({
-  className = "",
-  size = 320,
-  delay = 0,
-}: {
-  className?: string;
-  size?: number;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      className={`absolute rounded-full blur-3xl ${className}`}
-      style={{
-        width: size,
-        height: size,
-        background:
-          "radial-gradient(circle, rgba(200,247,1,0.22) 0%, rgba(200,247,1,0.10) 38%, rgba(200,247,1,0.00) 75%)",
-      }}
-      animate={{
-        scale: [1, 1.12, 1],
-        opacity: [0.65, 1, 0.65],
-        x: [0, 18, 0],
-        y: [0, -10, 0],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay,
-      }}
-    />
-  );
-}
-
 function AnimatedNetwork() {
   const nodes = [
     { id: 1, x: "16%", y: "26%", label: "Supply" },
@@ -123,10 +97,6 @@ function AnimatedNetwork() {
 
   return (
     <div className="relative h-[460px] w-full overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-[#f8ffd9] shadow-[0_30px_100px_rgba(15,23,42,0.12)]">
-      <BrandGlow className="-left-16 top-10" size={260} delay={0.2} />
-      <BrandGlow className="right-0 top-0" size={220} delay={1.2} />
-      <BrandGlow className="bottom-0 left-1/3" size={240} delay={2} />
-
       <motion.div
         className="absolute inset-0"
         style={{
@@ -144,7 +114,11 @@ function AnimatedNetwork() {
         }}
       />
 
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <svg
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
         {lines.map((line, index) => (
           <motion.line
             key={index}
@@ -187,24 +161,6 @@ function AnimatedNetwork() {
           }}
           whileHover={{ scale: 1.06 }}
         >
-          <motion.div
-            className="absolute inset-0 rounded-full blur-2xl"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(200,247,1,0.30) 0%, rgba(200,247,1,0.10) 45%, rgba(200,247,1,0.00) 75%)",
-            }}
-            animate={{
-              scale: [1, 1.4, 1],
-              opacity: [0.5, 0.95, 0.5],
-            }}
-            transition={{
-              duration: 3.4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: index * 0.25,
-            }}
-          />
-
           <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-[#d9f86d] bg-white/90 shadow-[0_15px_35px_rgba(15,23,42,0.12)] backdrop-blur transition-all duration-300 group-hover:border-[#c8f701]">
             <motion.div
               className="h-4 w-4 rounded-full"
@@ -314,22 +270,25 @@ export default function KwanzaHomepage() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-          <div className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-950">
+          <Link href="/" className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-950">
             Kwanza Capital Africa
-          </div>
+          </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
             {navItems.map((item, index) => (
-              <motion.a
-                key={item}
-                href="#"
-                className="text-sm text-slate-600 transition-colors duration-300 hover:text-slate-950"
+              <motion.div
+                key={item.label}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + index * 0.06, duration: 0.45 }}
               >
-                {item}
-              </motion.a>
+                <Link
+                  href={item.href}
+                  className="text-sm text-slate-600 transition-colors duration-300 hover:text-slate-950"
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
@@ -339,9 +298,6 @@ export default function KwanzaHomepage() {
 
       <main>
         <section className="relative overflow-hidden pt-32 md:pt-40">
-          <BrandGlow className="-left-24 top-0" size={380} delay={0.3} />
-          <BrandGlow className="right-[-80px] top-10" size={320} delay={1.4} />
-
           <div
             className="absolute inset-0"
             style={{
@@ -351,7 +307,12 @@ export default function KwanzaHomepage() {
           />
 
           <div className="mx-auto grid max-w-7xl gap-16 px-6 pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10">
-            <motion.div initial="hidden" animate="visible" variants={stagger} className="relative z-10">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+              className="relative z-10"
+            >
               <motion.div
                 variants={fadeUp}
                 className="mb-6 inline-flex items-center rounded-full border border-[#e0f67e] bg-[#f8ffd8] px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-slate-700 shadow-sm"
@@ -380,7 +341,9 @@ export default function KwanzaHomepage() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </BrandButton>
 
-                <BrandButton dark={false}>View Capabilities</BrandButton>
+                <Link href="#capabilities">
+                  <BrandButton dark={false}>View Capabilities</BrandButton>
+                </Link>
               </motion.div>
             </motion.div>
 
@@ -414,6 +377,7 @@ export default function KwanzaHomepage() {
         </section>
 
         <motion.section
+          id="services"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.18 }}
@@ -456,15 +420,13 @@ export default function KwanzaHomepage() {
         </motion.section>
 
         <motion.section
+          id="industries"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.18 }}
           variants={stagger}
           className="relative overflow-hidden bg-slate-950"
         >
-          <BrandGlow className="-left-20 top-10" size={260} delay={0.8} />
-          <BrandGlow className="right-0 bottom-0" size={260} delay={1.5} />
-
           <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
             <SectionHeader
               eyebrow="Industries"
@@ -489,6 +451,7 @@ export default function KwanzaHomepage() {
         </motion.section>
 
         <motion.section
+          id="capabilities"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.18 }}
@@ -530,8 +493,6 @@ export default function KwanzaHomepage() {
           className="mx-auto max-w-7xl px-6 pb-24 lg:px-10"
         >
           <div className="relative overflow-hidden rounded-[32px] border border-[#e4f89a] bg-gradient-to-br from-[#fbffe8] via-white to-slate-50 px-8 py-12 md:px-12 md:py-16">
-            <BrandGlow className="right-[-40px] top-[-40px]" size={240} delay={1} />
-
             <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div className="max-w-3xl">
                 <div className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
@@ -552,6 +513,7 @@ export default function KwanzaHomepage() {
         </motion.section>
 
         <motion.section
+          id="contact"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.45 }}
@@ -604,11 +566,25 @@ export default function KwanzaHomepage() {
           </div>
 
           <div className="grid gap-3 text-sm text-slate-600">
-            {navItems.map((item) => (
-              <a key={item} href="#" className="transition-colors duration-300 hover:text-slate-950">
-                {item}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="transition-colors duration-300 hover:text-slate-950"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="transition-colors duration-300 hover:text-slate-950"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </div>
 
           <div className="text-sm leading-7 text-slate-600">

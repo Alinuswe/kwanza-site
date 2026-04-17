@@ -2,7 +2,19 @@
 
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, HeroSignalLines, HeroWaveField, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
+import {
+  fadeUp,
+  HeroNetworkMatrix,
+  HeroSignalLines,
+  HeroWaveField,
+  PrimaryButton,
+  SecondaryButton,
+  SectionHeader,
+  stagger,
+  SurfaceCard,
+  SystemGrid,
+  TechWaveMesh,
+} from "@/app/components/ui";
 
 const services = [
   {
@@ -158,10 +170,30 @@ function OperationalNetworkPanel() {
 export default function HomePage() {
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-100 px-6 pb-24 pt-12 lg:px-10 lg:pt-14">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-200 via-slate-50 to-slate-300 px-6 pb-24 pt-12 lg:px-10 lg:pt-14">
         <SystemGrid className="opacity-35" />
         <HeroWaveField strength="strong" className="opacity-100" />
-        <HeroSignalLines className="opacity-90" />
+        <HeroSignalLines className="opacity-100" />
+        <HeroNetworkMatrix className="opacity-100" />
+        <TechWaveMesh className="opacity-95 mix-blend-normal" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_12%,rgba(15,23,42,0.14),transparent_38%),radial-gradient(circle_at_92%_18%,rgba(15,23,42,0.11),transparent_42%),radial-gradient(circle_at_62%_78%,rgba(148,163,184,0.26),transparent_42%)]" />
+        <div className="pointer-events-none absolute inset-0">
+          <svg viewBox="0 0 1200 580" className="absolute inset-0 h-full w-full opacity-80">
+            {[
+              { path: "M120 92 C300 160 430 70 610 140 C790 204 920 116 1090 176", delay: 0 },
+              { path: "M80 170 C250 236 400 146 574 214 C744 282 892 196 1080 254", delay: 0.35 },
+              { path: "M40 250 C220 314 384 220 560 286 C738 352 902 276 1120 326", delay: 0.7 },
+            ].map((line, idx) => (
+              <g key={line.path}>
+                <motion.path d={line.path} stroke="rgba(148,163,184,0.24)" strokeWidth="1.1" fill="none" />
+                <circle r="4" fill="#c8f701" opacity="0.85">
+                  <animateMotion dur={`${3 + idx * 0.45}s`} repeatCount="indefinite" begin={`${line.delay}s`} path={line.path} />
+                  <animate attributeName="opacity" values="0.35;0.95;0.35" dur={`${3 + idx * 0.45}s`} repeatCount="indefinite" begin={`${line.delay}s`} />
+                </circle>
+              </g>
+            ))}
+          </svg>
+        </div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-100 to-transparent" />
 
         <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -204,8 +236,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative px-6 py-24 lg:px-10">
+      <section className="relative bg-gradient-to-b from-slate-200 via-slate-100 to-slate-50 px-6 py-24 lg:px-10">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_34%,rgba(148,163,184,0.16),transparent_36%),radial-gradient(circle_at_88%_70%,rgba(200,247,1,0.08),transparent_33%)]" />
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
             <SectionHeader
@@ -233,7 +266,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white px-6 py-24 lg:px-10">
+      <section className="border-y border-slate-300 bg-gradient-to-b from-slate-50 via-white to-slate-200 px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
             <SectionHeader
@@ -261,7 +294,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10">
+      <section className="bg-gradient-to-b from-slate-200 via-slate-100 to-slate-50 px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <SectionHeader

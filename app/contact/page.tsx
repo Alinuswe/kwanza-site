@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
 import { contactDetails } from "@/app/lib/site";
-import { fadeUp, HeroSignalLines, HeroWaveField, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
+import { fadeUp, HeroSignalLines, HeroWaveField, PrimaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid, TechWaveMesh } from "@/app/components/ui";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -33,10 +33,11 @@ export default function ContactPage() {
 
   return (
     <PageShell>
-      <section className="relative overflow-hidden px-6 pb-24 pt-10 lg:px-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-200 via-slate-100 to-white px-6 pb-24 pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
         <HeroWaveField className="opacity-75" />
         <HeroSignalLines className="opacity-45" />
+        <TechWaveMesh className="opacity-45" />
         <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
@@ -51,7 +52,7 @@ export default function ContactPage() {
                 Whether you have a procurement requirement, infrastructure scope, or tender opportunity, we respond with structure and execution clarity.
               </motion.p>
             </div>
-            <motion.div variants={fadeUp}>
+            <motion.div variants={fadeUp} className="space-y-4">
               <SurfaceCard className="bg-slate-50">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">Direct Contact</p>
                 <div className="mt-4 space-y-2 text-sm text-slate-700">
@@ -60,12 +61,21 @@ export default function ContactPage() {
                   <p>{contactDetails.location}</p>
                 </div>
               </SurfaceCard>
+              <SurfaceCard className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 text-white">
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-300">Request for Quote</p>
+                <p className="mt-3 text-sm leading-7 text-slate-200">
+                  Send your scope, technical requirements, timelines, and delivery context. We will respond with a structured engagement path.
+                </p>
+                <div className="mt-5">
+                  <PrimaryButton href="/contact">Request a Quote</PrimaryButton>
+                </div>
+              </SurfaceCard>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white px-6 py-24 lg:px-10">
+      <section className="border-y border-slate-300 bg-gradient-to-b from-white via-slate-100 to-slate-200 px-6 py-24 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <SectionHeader

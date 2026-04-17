@@ -57,6 +57,7 @@ export function SiteFooter() {
             <span className="h-2 w-2 rounded-full bg-[#c8f701]" />
             {siteName}
           </p>
+          <p className="mt-3 text-sm font-medium text-slate-200">Kwanza Capital Africa Limited</p>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">{companyIdentity}</p>
           <p className="mt-4 max-w-xl text-sm leading-7 text-slate-400">{footerCopy}</p>
           <div className="mt-6 space-y-2 text-sm text-slate-300">

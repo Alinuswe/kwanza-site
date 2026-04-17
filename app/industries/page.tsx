@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
+import { fadeUp, HeroSignalLines, HeroWaveField, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
 
 export default function IndustriesPage() {
   const industries = [
@@ -47,6 +47,8 @@ export default function IndustriesPage() {
     <PageShell>
       <section className="relative overflow-hidden px-6 pb-24 pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
+        <HeroWaveField className="opacity-70" />
+        <HeroSignalLines className="opacity-45" />
         <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.p variants={fadeUp} className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">

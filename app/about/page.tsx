@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
+import { fadeUp, HeroSignalLines, HeroWaveField, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
 
 export default function AboutPage() {
   const problems = [
@@ -37,6 +37,8 @@ export default function AboutPage() {
     <PageShell>
       <section className="relative overflow-hidden px-6 pb-24 pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
+        <HeroWaveField className="opacity-75" />
+        <HeroSignalLines className="opacity-50" />
         <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div>

@@ -16,9 +16,10 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  background: var(--background);
+  background: radial-gradient(circle at top, #ffffff 0%, #f8fafc 55%, #f1f5f9 100%);
   color: var(--foreground);
   font-family: var(--font-sans);
 }

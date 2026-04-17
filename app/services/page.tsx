@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, PrimaryButton, SectionHeader, stagger, SurfaceCard } from "@/app/components/ui";
+import { fadeUp, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
 
 export default function ServicesPage() {
   const services = [
@@ -25,12 +25,7 @@ export default function ServicesPage() {
       overview: "Scalable solar and hybrid systems for continuity.",
       details:
         "Our team designs and deploys resilient power solutions tailored to operational environments with unstable or limited grid infrastructure.",
-      points: [
-        "System design and sizing",
-        "Deployment and implementation",
-        "Operational continuity planning",
-        "Performance optimization",
-      ],
+      points: ["System design and sizing", "Deployment and implementation", "Operational continuity planning", "Performance optimization"],
     },
     {
       id: "03",
@@ -38,12 +33,7 @@ export default function ServicesPage() {
       overview: "Disciplined delivery of awarded opportunities.",
       details:
         "We execute tenders and contracts through structured controls that maintain alignment to scope, milestones, and compliance requirements.",
-      points: [
-        "Execution planning",
-        "Timeline and milestone management",
-        "Stakeholder coordination",
-        "Performance tracking and reporting",
-      ],
+      points: ["Execution planning", "Timeline and milestone management", "Stakeholder coordination", "Performance tracking and reporting"],
     },
     {
       id: "04",
@@ -51,21 +41,25 @@ export default function ServicesPage() {
       overview: "Operational systems and supporting infrastructure.",
       details:
         "We deliver ICT systems, hardware, and supporting infrastructure to strengthen capability, reliability, and operational readiness.",
-      points: [
-        "Systems and hardware sourcing",
-        "Infrastructure deployment",
-        "Integration support",
-        "Operational handover",
-      ],
+      points: ["Systems and hardware sourcing", "Infrastructure deployment", "Integration support", "Operational handover"],
     },
+  ];
+
+  const deliveryAssurance = [
+    "Scope controls and documented acceptance criteria",
+    "Structured supplier and partner coordination",
+    "Milestone-led reporting cadence",
+    "Safety, compliance, and governance alignment",
   ];
 
   return (
     <PageShell>
-      <section className="px-6 pb-20 pt-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
+      <section className="relative overflow-hidden px-6 pb-24 pt-10 lg:px-10">
+        <SystemGrid className="opacity-35" />
+        <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.p variants={fadeUp} className="mb-5 inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
+            <motion.p variants={fadeUp} className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
               Services
             </motion.p>
             <motion.h1 variants={fadeUp} className="max-w-5xl text-5xl font-semibold tracking-tight md:text-6xl">
@@ -78,7 +72,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white px-6 py-20 lg:px-10">
+      <section className="border-y border-slate-200 bg-white px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             eyebrow="Core Offerings"
@@ -106,16 +100,28 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-6 py-20 lg:px-10">
+      <section className="px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            eyebrow="Engagement"
-            title="Need a delivery partner with a structured approach?"
-            description="Share your project scope and our team will respond with a focused, execution-oriented path forward."
-          />
-          <div className="mt-10">
-            <PrimaryButton href="/contact">Request a Quote</PrimaryButton>
-          </div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+            <SectionHeader
+              eyebrow="Delivery Assurance"
+              title="Governance and control built into every engagement"
+              description="Our teams work within a measurable execution framework that protects project continuity and accountability."
+            />
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {deliveryAssurance.map((point) => (
+                <motion.div key={point} variants={fadeUp}>
+                  <SurfaceCard className="bg-slate-50">
+                    <p className="text-base text-slate-700">{point}</p>
+                  </SurfaceCard>
+                </motion.div>
+              ))}
+            </div>
+            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
+              <PrimaryButton href="/contact">Request a Quote</PrimaryButton>
+              <SecondaryButton href="/capabilities">View Capabilities</SecondaryButton>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </PageShell>

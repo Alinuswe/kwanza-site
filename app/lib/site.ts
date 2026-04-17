@@ -16,7 +16,7 @@ export const footerCopy =
   "Structured procurement, energy systems, and execution delivery for reliability-critical operations.";
 
 export const contactDetails = {
-  email: "info@kwanzacapital.africa",
-  phone: "+260 97 000 0000",
+  email: "md@kwanzacapitalafrica.com",
+  phone: "+260 762 336 792",
   location: "Lusaka, Zambia",
 };

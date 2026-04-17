@@ -84,7 +84,122 @@ export function SurfaceCard({ children, className = "" }: { children: React.Reac
 }
 
 export function SystemGrid({ className = "" }: { className?: string }) {
-  return <div className={`pointer-events-none absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,rgba(148,163,184,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.18)_1px,transparent_1px)] [background-size:40px_40px] ${className}`} />;
+  return (
+    <motion.div
+      className={`pointer-events-none absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,rgba(148,163,184,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.18)_1px,transparent_1px)] [background-size:40px_40px] ${className}`}
+      animate={{ backgroundPosition: ["0px 0px", "40px 24px", "0px 0px"] }}
+      transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+    />
+  );
+}
+
+export function HeroNetworkMatrix({ className = "" }: { className?: string }) {
+  const nodes = [
+    { x: 8, y: 20 },
+    { x: 18, y: 42 },
+    { x: 30, y: 25 },
+    { x: 38, y: 58 },
+    { x: 52, y: 24 },
+    { x: 60, y: 46 },
+    { x: 72, y: 34 },
+    { x: 84, y: 52 },
+    { x: 92, y: 22 },
+  ];
+
+  const links = [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [2, 4],
+    [3, 5],
+    [4, 5],
+    [4, 6],
+    [5, 7],
+    [6, 7],
+    [6, 8],
+  ] as const;
+
+  return (
+    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
+      <motion.svg
+        viewBox="0 0 100 70"
+        className="absolute right-[-4%] top-[8%] h-[82%] w-[68%] opacity-90"
+        animate={{ x: [0, 8, 0], y: [0, -4, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {links.map(([from, to], idx) => {
+          const a = nodes[from];
+          const b = nodes[to];
+          const path = `M ${a.x} ${a.y} L ${b.x} ${b.y}`;
+          return (
+            <g key={`${from}-${to}`}>
+              <path d={path} stroke="rgba(148,163,184,0.42)" strokeWidth="0.18" fill="none" />
+              <motion.path
+                d={path}
+                stroke="#c8f701"
+                strokeWidth="0.22"
+                strokeLinecap="round"
+                fill="none"
+                strokeDasharray="0.8 2.4"
+                animate={{ strokeDashoffset: [4, 0], opacity: [0.12, 0.6, 0.12] }}
+                transition={{ duration: 2.8 + idx * 0.35, repeat: Infinity, ease: "linear" }}
+              />
+            </g>
+          );
+        })}
+        {nodes.map((node, idx) => (
+          <g key={`${node.x}-${node.y}`}>
+            <circle cx={node.x} cy={node.y} r="0.45" fill="#c8f701" opacity="0.95" />
+            <motion.circle
+              cx={node.x}
+              cy={node.y}
+              r="0.45"
+              fill="none"
+              stroke="rgba(200,247,1,0.65)"
+              strokeWidth="0.13"
+              animate={{ r: [0.45, 1.8], opacity: [0.9, 0] }}
+              transition={{ duration: 2.4, repeat: Infinity, delay: idx * 0.23, ease: "easeOut" }}
+            />
+          </g>
+        ))}
+      </motion.svg>
+    </div>
+  );
+}
+
+export function TechWaveMesh({ className = "" }: { className?: string }) {
+  return (
+    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
+      <motion.div
+        className="absolute inset-x-[-16%] top-[18%] h-[62%] opacity-75"
+        animate={{ x: [0, 14, 0], y: [0, 4, 0] }}
+        transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
+      >
+        <svg viewBox="0 0 1200 460" className="h-full w-full">
+          {[
+            "M-50 112 C100 72 236 196 392 146 C558 92 700 204 864 152 C980 118 1060 148 1240 120",
+            "M-30 178 C122 150 250 264 420 210 C588 152 742 258 904 206 C1024 168 1092 194 1240 172",
+            "M-10 250 C152 220 292 326 456 276 C628 220 770 320 940 274 C1074 238 1120 256 1240 238",
+          ].map((path, idx) => (
+            <g key={path}>
+              <path d={path} stroke="rgba(148,163,184,0.18)" strokeWidth="1.1" fill="none" />
+              <motion.path
+                d={path}
+                stroke="#c8f701"
+                strokeWidth="1.1"
+                fill="none"
+                strokeLinecap="round"
+                strokeDasharray="5 14"
+                animate={{ strokeDashoffset: [0, -90] }}
+                transition={{ duration: 8 + idx * 1.2, ease: "linear", repeat: Infinity }}
+                opacity={0.38}
+              />
+            </g>
+          ))}
+        </svg>
+      </motion.div>
+    </div>
+  );
 }
 
 export function HeroWaveField({

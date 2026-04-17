@@ -484,8 +484,8 @@ export default function AboutPage() {
           <div className="grid gap-3 text-sm text-slate-600">
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
-            <Link href="/#services">Services</Link>
-            <Link href="/#industries">Industries</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/industries">Industries</Link>
             <Link href="/#capabilities">Capabilities</Link>
             <Link href="/#contact">Contact</Link>
           </div>

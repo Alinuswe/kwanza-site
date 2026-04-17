@@ -445,7 +445,7 @@ export default function IndustriesPage() {
 
           <div className="text-sm leading-7 text-slate-600">
             <div>info@kwanzacapitalafrica.com</div>
-            <div>+260 XXX XXX XXX</div>
+            <div>+260 762 336 792</div>
           </div>
         </div>
 

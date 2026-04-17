@@ -8,8 +8,8 @@ import { ArrowRight } from "lucide-react";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
+  { label: "Services", href: "services" },
+  { label: "Industries", href: "industries" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "Contact", href: "#contact" },
 ];
@@ -589,7 +589,7 @@ export default function KwanzaHomepage() {
 
           <div className="text-sm leading-7 text-slate-600">
             <div>info@kwanzacapitalafrica.com</div>
-            <div>+260 XXX XXX XXX</div>
+            <div>+260 762 336 792</div>
           </div>
         </div>
 

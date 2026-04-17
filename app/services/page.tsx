@@ -395,14 +395,14 @@ export default function ServicesPage() {
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
             <Link href="/services">Services</Link>
-            <Link href="/#industries">Industries</Link>
+            <Link href="/industries">Industries</Link>
             <Link href="/#capabilities">Capabilities</Link>
             <Link href="/#contact">Contact</Link>
           </div>
 
           <div className="text-sm leading-7 text-slate-600">
             <div>info@kwanzacapitalafrica.com</div>
-            <div>+260 XXX XXX XXX</div>
+            <div>+260 762 336 792</div>
           </div>
         </div>
 

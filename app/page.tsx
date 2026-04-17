@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
+import { fadeUp, HeroSignalLines, HeroWaveField, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
 
 const services = [
   {
@@ -160,10 +160,12 @@ export default function HomePage() {
     <PageShell>
       <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-100 px-6 pb-24 pt-12 lg:px-10 lg:pt-14">
         <SystemGrid className="opacity-35" />
+        <HeroWaveField strength="strong" className="opacity-100" />
+        <HeroSignalLines className="opacity-90" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-100 to-transparent" />
 
         <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
+          <motion.div initial="hidden" animate="visible" variants={stagger} className="relative">
             <motion.p
               variants={fadeUp}
               className="mb-6 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700"
@@ -184,11 +186,16 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {deliveryIndicators.map((indicator) => (
-                <div key={indicator.label} className="rounded-2xl border border-slate-200 bg-white/90 px-4 py-4 shadow-[0_20px_45px_-42px_rgba(15,23,42,0.7)]">
+              {deliveryIndicators.map((indicator, index) => (
+                <motion.div
+                  key={indicator.label}
+                  className="rounded-2xl border border-slate-200 bg-white/90 px-4 py-4 shadow-[0_20px_45px_-42px_rgba(15,23,42,0.7)]"
+                  animate={{ y: [0, -2.5, 0] }}
+                  transition={{ duration: 5 + index * 0.45, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
+                >
                   <p className="text-2xl font-semibold text-slate-950">{indicator.value}</p>
                   <p className="mt-1 text-xs uppercase tracking-[0.14em] text-slate-500">{indicator.label}</p>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>

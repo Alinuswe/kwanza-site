@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, PrimaryButton, SectionHeader, stagger, SurfaceCard } from "@/app/components/ui";
+import { fadeUp, PrimaryButton, SecondaryButton, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
 
 export default function AboutPage() {
   const problems = [
@@ -26,13 +26,22 @@ export default function AboutPage() {
     "Scale is built through structure, not speed",
   ];
 
+  const operatingModel = [
+    "Define scope and risk boundaries",
+    "Structure sourcing and technical pathways",
+    "Execute with governance and milestone discipline",
+    "Report outcomes and continuous improvements",
+  ];
+
   return (
     <PageShell>
-      <section className="px-6 pb-20 pt-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
+      <section className="relative overflow-hidden px-6 pb-24 pt-10 lg:px-10">
+        <SystemGrid className="opacity-35" />
+        <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
-              <motion.p variants={fadeUp} className="mb-5 inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
+              <motion.p variants={fadeUp} className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                 About Kwanza Capital Africa
               </motion.p>
               <motion.h1 variants={fadeUp} className="text-5xl font-semibold tracking-tight md:text-6xl">
@@ -59,7 +68,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white px-6 py-20 lg:px-10">
+      <section className="border-y border-slate-200 bg-white px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeader eyebrow="Problem to Solution" title="The gap we address" />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -87,16 +96,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="px-6 py-20 lg:px-10">
+      <section className="px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <SectionHeader
-              eyebrow="Execution Focus"
-              title="Structured to support environments where reliability is non-negotiable"
-              description="Our model is purpose-built for long-term performance, with consistency at every stage from sourcing to delivery."
+              eyebrow="Execution Model"
+              title="A disciplined operating sequence from brief to delivery"
+              description="Every engagement follows a sequence that protects quality, timeline control, and governance integrity."
             />
-            <motion.div variants={fadeUp} className="mt-10">
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {operatingModel.map((step, index) => (
+                <motion.div variants={fadeUp} key={step}>
+                  <SurfaceCard className="bg-slate-50">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Stage 0{index + 1}</p>
+                    <p className="mt-3 text-base text-slate-700">{step}</p>
+                  </SurfaceCard>
+                </motion.div>
+              ))}
+            </div>
+            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
               <PrimaryButton href="/contact">Request a Quote</PrimaryButton>
+              <SecondaryButton href="/capabilities">View Capabilities</SecondaryButton>
             </motion.div>
           </motion.div>
         </div>

@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
-import { fadeUp, SectionHeader, stagger, SurfaceCard } from "@/app/components/ui";
+import { contactDetails } from "@/app/lib/site";
+import { fadeUp, SectionHeader, stagger, SurfaceCard, SystemGrid } from "@/app/components/ui";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -13,6 +14,13 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
+
+  const responseWorkflow = [
+    "Initial acknowledgement and intake review",
+    "Clarification of project scope and constraints",
+    "Proposed execution pathway and timeline guidance",
+    "Commercial and technical alignment",
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,11 +33,13 @@ export default function ContactPage() {
 
   return (
     <PageShell>
-      <section className="px-6 pb-20 pt-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
+      <section className="relative overflow-hidden px-6 pb-24 pt-10 lg:px-10">
+        <SystemGrid className="opacity-35" />
+        <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
-              <motion.p variants={fadeUp} className="mb-5 inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
+              <motion.p variants={fadeUp} className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                 Contact
               </motion.p>
               <motion.h1 variants={fadeUp} className="text-5xl font-semibold tracking-tight md:text-6xl">
@@ -41,17 +51,19 @@ export default function ContactPage() {
             </div>
             <motion.div variants={fadeUp}>
               <SurfaceCard className="bg-slate-50">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">Response Focus</p>
-                <p className="mt-4 leading-7 text-slate-700">
-                  We engage around procurement, contract execution, infrastructure, and operational requirements where reliability and speed of response matter.
-                </p>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">Direct Contact</p>
+                <div className="mt-4 space-y-2 text-sm text-slate-700">
+                  <p>Email: {contactDetails.email}</p>
+                  <p>Phone: {contactDetails.phone}</p>
+                  <p>{contactDetails.location}</p>
+                </div>
               </SurfaceCard>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white px-6 py-20 lg:px-10">
+      <section className="border-y border-slate-200 bg-white px-6 py-24 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <SectionHeader
@@ -59,6 +71,14 @@ export default function ContactPage() {
               title="Start with a structured brief"
               description="Provide your details below and our team will follow up with an execution-oriented response."
             />
+            <div className="mt-8 space-y-3">
+              {responseWorkflow.map((item, index) => (
+                <SurfaceCard className="bg-slate-50 p-5" key={item}>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Step 0{index + 1}</p>
+                  <p className="mt-2 text-sm text-slate-700">{item}</p>
+                </SurfaceCard>
+              ))}
+            </div>
           </div>
 
           <motion.form onSubmit={handleSubmit} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -98,8 +118,9 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-700"
+                className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
               >
+                <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                 Request a Quote
               </button>
             </SurfaceCard>

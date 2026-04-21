@@ -150,11 +150,11 @@ export default function ContactPage() {
 
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-6 pb-24 pt-10 lg:px-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-4 sm:px-6 pb-16 pt-8 sm:pb-20 sm:pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
-        <HeroWaveField className="opacity-75" />
-        <HeroSignalLines className="opacity-45" />
-        <TechWaveMesh className="opacity-45" />
+        <HeroWaveField className="opacity-45 sm:opacity-75" />
+        <HeroSignalLines className="opacity-25 sm:opacity-45" />
+        <TechWaveMesh className="opacity-25 sm:opacity-45" />
         <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
@@ -162,10 +162,10 @@ export default function ContactPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                 Contact
               </motion.p>
-              <motion.h1 variants={fadeUp} className="text-5xl font-semibold tracking-tight md:text-6xl">
+              <motion.h1 variants={fadeUp} className="text-4xl font-semibold tracking-tight leading-tight sm:text-5xl md:text-6xl">
                 Engage with a partner built for disciplined execution
               </motion.h1>
-              <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl">
+              <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg md:text-xl">
                 Whether you have a procurement requirement, infrastructure scope, or tender opportunity, we respond with structure and execution clarity.
               </motion.p>
             </div>
@@ -187,7 +187,7 @@ export default function ContactPage() {
                   <button
                     type="button"
                     onClick={() => setIsQuoteModalOpen(true)}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/40 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-200/40 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                     Request for Quote
@@ -199,7 +199,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <SectionHeader
@@ -257,7 +257,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmittingEnquiry}
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70"
+                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-4 sm:px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                 {isSubmittingEnquiry ? "Sending..." : "Send Message"}
@@ -341,7 +341,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmittingQuote}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-4 sm:px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                     {isSubmittingQuote ? "Submitting..." : "Request a Quote"}

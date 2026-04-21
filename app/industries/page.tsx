@@ -45,7 +45,7 @@ export default function IndustriesPage() {
 
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-6 pb-24 pt-10 lg:px-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-4 sm:px-6 pb-16 pt-8 sm:pb-20 sm:pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
         <HeroWaveField className="opacity-70" />
         <HeroSignalLines className="opacity-45" />
@@ -56,17 +56,17 @@ export default function IndustriesPage() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
               Industries
             </motion.p>
-            <motion.h1 variants={fadeUp} className="max-w-5xl text-5xl font-semibold tracking-tight md:text-6xl">
+            <motion.h1 variants={fadeUp} className="max-w-5xl text-4xl font-semibold tracking-tight leading-tight sm:text-5xl md:text-6xl">
               Sector expertise tailored to high-demand operating environments
             </motion.h1>
-            <motion.p variants={fadeUp} className="mt-6 max-w-4xl text-lg leading-8 text-slate-600 md:text-xl">
+            <motion.p variants={fadeUp} className="mt-6 max-w-4xl text-base leading-7 text-slate-600 sm:text-lg md:text-xl">
               We work across sectors where execution reliability determines operational outcomes.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-4 sm:px-6 py-20 sm:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             eyebrow="Core Sectors"
@@ -94,7 +94,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-4 sm:px-6 py-20 sm:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <SectionHeader

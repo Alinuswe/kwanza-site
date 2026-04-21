@@ -35,11 +35,11 @@ export default function AboutPage() {
 
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-6 pb-24 pt-10 lg:px-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-4 sm:px-6 pb-16 pt-8 sm:pb-20 sm:pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
-        <HeroWaveField className="opacity-75" />
-        <HeroSignalLines className="opacity-50" />
-        <TechWaveMesh className="opacity-45" />
+        <HeroWaveField className="opacity-45 sm:opacity-75" />
+        <HeroSignalLines className="opacity-30 sm:opacity-50" />
+        <TechWaveMesh className="opacity-25 sm:opacity-45" />
         <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
@@ -47,10 +47,10 @@ export default function AboutPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
                 About Kwanza Capital Africa
               </motion.p>
-              <motion.h1 variants={fadeUp} className="text-5xl font-semibold tracking-tight md:text-6xl">
+              <motion.h1 variants={fadeUp} className="text-4xl font-semibold tracking-tight leading-tight sm:text-5xl md:text-6xl">
                 Built on Systems. Driven by Execution.
               </motion.h1>
-              <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl">
+              <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg md:text-xl">
                 We are an industrial procurement and energy solutions company focused on structured sourcing, reliable infrastructure,
                 and disciplined project execution for mission-critical environments.
               </motion.p>
@@ -71,7 +71,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeader eyebrow="Problem to Solution" title="The gap we address" />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -99,7 +99,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <SectionHeader

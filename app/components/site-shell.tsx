@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { companyIdentity, contactDetails, footerCopy, primaryNav, siteName } from "@/app/lib/site";
+import { companyIdentity, contactDetails, footerCopy, footerCopyright, legalNav, primaryNav, siteName } from "@/app/lib/site";
 import { PrimaryButton } from "@/app/components/ui";
 
 export function SiteHeader() {
@@ -116,31 +116,48 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="border-t border-slate-800 bg-slate-950 text-slate-200">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-[1.25fr_0.75fr_0.75fr] lg:px-10">
         <div>
           <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-white">
             <span className="h-2 w-2 rounded-full bg-[#c8f701]" />
             {siteName}
           </p>
-          <p className="mt-3 text-sm font-medium text-slate-200">Kwanza Capital Africa Limited</p>
+          <p className="mt-3 text-sm font-medium text-slate-200">Kwanza Capital Africa</p>
+          <p className="mt-2 text-sm text-slate-400">{contactDetails.location}</p>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">{companyIdentity}</p>
           <p className="mt-4 max-w-xl text-sm leading-7 text-slate-400">{footerCopy}</p>
           <div className="mt-6 space-y-2 text-sm text-slate-300">
             <p className="break-all">Email: {contactDetails.email}</p>
             <p>Phone: {contactDetails.phone}</p>
-            <p>{contactDetails.location}</p>
           </div>
         </div>
 
         <div>
           <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Navigation</p>
-          <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 text-sm">
             {primaryNav.map((item) => (
               <Link key={item.href} href={item.href} className="text-slate-300 transition-colors hover:text-white">
                 {item.label}
               </Link>
             ))}
           </div>
+        </div>
+
+        <div>
+          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Legal & Policy</p>
+          <div className="grid grid-cols-1 gap-3 text-sm">
+            {legalNav.map((item) => (
+              <Link key={item.href} href={item.href} className="text-slate-300 transition-colors hover:text-white">
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-slate-800/90">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-slate-400 sm:px-6 sm:text-sm lg:px-10">
+          <p>{footerCopyright}</p>
         </div>
       </div>
     </footer>

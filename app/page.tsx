@@ -302,7 +302,7 @@ function HeroOperationalBackdrop() {
 export default function HomePage() {
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-200 via-slate-100 to-slate-200 px-6 pb-24 pt-12 lg:px-10 lg:pt-14">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-200 via-slate-100 to-slate-200 px-4 sm:px-6 pb-16 pt-8 sm:pb-20 sm:pt-12 lg:px-10 lg:pt-14">
         <HeroOperationalBackdrop />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(255,255,255,0.58),transparent_44%),radial-gradient(circle_at_84%_18%,rgba(248,250,252,0.5),transparent_40%),linear-gradient(to_bottom,rgba(255,255,255,0.24),rgba(255,255,255,0.08))]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-100/90 via-slate-100/45 to-transparent" />
@@ -317,10 +317,10 @@ export default function HomePage() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
               Structured procurement and energy systems
             </motion.p>
-            <motion.h1 variants={fadeUp} className="relative max-w-4xl text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
+            <motion.h1 variants={fadeUp} className="relative max-w-4xl text-4xl font-semibold tracking-tight leading-tight text-slate-950 sm:text-5xl md:text-6xl">
               Industrial Execution, Orchestrated With Precision and Systems Intelligence
             </motion.h1>
-            <motion.p variants={fadeUp} className="relative mt-6 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
+            <motion.p variants={fadeUp} className="relative mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg md:text-xl">
               Kwanza Capital Africa aligns procurement, power, and deployment operations under one disciplined operating model—
               delivering measurable continuity for organizations where downtime, delay, and compliance drift are unacceptable.
             </motion.p>
@@ -348,7 +348,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
+      <section className="relative bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_34%,rgba(148,163,184,0.16),transparent_36%),radial-gradient(circle_at_88%_70%,rgba(200,247,1,0.08),transparent_33%)]" />
         <div className="mx-auto max-w-7xl">
@@ -378,7 +378,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100 px-6 py-24 lg:px-10">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
             <SectionHeader
@@ -406,7 +406,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-6 py-24 lg:px-10">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <SectionHeader

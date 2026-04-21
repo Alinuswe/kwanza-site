@@ -43,8 +43,8 @@ export function SectionHeader({
         <span className="h-px w-8 bg-[#c8f701]" />
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">{title}</h2>
-      {description ? <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">{description}</p> : null}
+      <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl md:text-4xl">{title}</h2>
+      {description ? <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base md:text-lg">{description}</p> : null}
     </motion.div>
   );
 }
@@ -53,7 +53,7 @@ export function PrimaryButton({ href, children }: { href: string; children: Reac
   return (
     <Link
       href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-700 hover:bg-slate-800"
+      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-700 hover:bg-slate-800 sm:px-6"
     >
       <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
       {children}
@@ -66,7 +66,7 @@ export function SecondaryButton({ href, children }: { href: string; children: Re
   return (
     <Link
       href={href}
-      className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-slate-500 hover:text-slate-950"
+      className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-slate-500 hover:text-slate-950 sm:px-6"
     >
       {children}
     </Link>
@@ -76,7 +76,7 @@ export function SecondaryButton({ href, children }: { href: string; children: Re
 export function SurfaceCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_10px_35px_-24px_rgba(15,23,42,0.55)] transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-28px_rgba(15,23,42,0.62)] md:p-8 ${className}`}
+      className={`rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_10px_35px_-24px_rgba(15,23,42,0.55)] transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-28px_rgba(15,23,42,0.62)] sm:p-6 md:p-8 ${className}`}
     >
       {children}
     </div>

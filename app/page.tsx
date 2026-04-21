@@ -4,16 +4,12 @@ import { motion } from "framer-motion";
 import { PageShell } from "@/app/components/site-shell";
 import {
   fadeUp,
-  HeroNetworkMatrix,
-  HeroSignalLines,
-  HeroWaveField,
   PrimaryButton,
   SecondaryButton,
   SectionHeader,
   stagger,
   SurfaceCard,
   SystemGrid,
-  TechWaveMesh,
 } from "@/app/components/ui";
 
 const services = [
@@ -167,40 +163,174 @@ function OperationalNetworkPanel() {
   );
 }
 
+function HeroOperationalBackdrop() {
+  const networkPaths = [
+    "M-50 98 C130 58 242 172 410 116 C560 66 710 170 884 114 C992 82 1100 124 1260 92",
+    "M-44 168 C126 136 256 246 430 198 C590 148 730 252 900 194 C1028 156 1118 186 1270 162",
+    "M-24 252 C144 224 294 330 468 280 C628 232 762 332 936 282 C1048 250 1134 282 1276 258",
+    "M-12 330 C160 306 314 402 492 356 C654 312 796 404 970 356 C1084 326 1168 354 1290 334",
+  ];
+
+  const signalWaves = [
+    "M-20 116 C90 142 180 50 302 80 C458 124 546 42 708 82 C832 114 914 62 1010 86",
+    "M-22 184 C100 210 200 126 326 154 C480 194 570 118 734 156 C850 184 940 132 1022 160",
+    "M-14 266 C108 292 214 212 344 236 C500 272 588 198 754 234 C868 264 956 216 1032 242",
+    "M-6 342 C124 366 232 286 366 312 C518 344 616 272 784 304 C892 334 972 296 1044 318",
+  ];
+
+  const nodes = [
+    { x: 12, y: 20, pulseDelay: 0.2 },
+    { x: 24, y: 36, pulseDelay: 0.7 },
+    { x: 40, y: 24, pulseDelay: 1.1 },
+    { x: 52, y: 44, pulseDelay: 0.5 },
+    { x: 66, y: 32, pulseDelay: 0.95 },
+    { x: 78, y: 48, pulseDelay: 1.4 },
+    { x: 90, y: 30, pulseDelay: 0.35 },
+  ];
+
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <motion.div
+        className="absolute inset-0 [background-image:linear-gradient(to_right,rgba(51,65,85,0.17)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.17)_1px,transparent_1px)] [background-size:34px_34px]"
+        animate={{ backgroundPosition: ["0px 0px", "34px 20px", "0px 0px"] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_12%,rgba(15,23,42,0.18),transparent_42%),radial-gradient(circle_at_72%_20%,rgba(200,247,1,0.14),transparent_45%),radial-gradient(circle_at_78%_82%,rgba(15,23,42,0.14),transparent_44%),linear-gradient(118deg,rgba(241,245,249,0.86)_0%,rgba(226,232,240,0.74)_45%,rgba(232,240,226,0.8)_100%)]" />
+
+      <motion.svg
+        viewBox="0 0 1200 460"
+        className="absolute inset-x-[-4%] top-[-2%] h-[104%] w-[108%] opacity-90"
+        animate={{ x: [0, 8, -4, 0], y: [0, -6, 5, 0] }}
+        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {networkPaths.map((path, idx) => (
+          <g key={path}>
+            <path d={path} stroke="rgba(51,65,85,0.2)" strokeWidth="1.25" fill="none" />
+            <motion.path
+              d={path}
+              stroke="#c8f701"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              fill="none"
+              strokeDasharray="7 16"
+              animate={{ strokeDashoffset: [0, -140] }}
+              transition={{ duration: 9.6 + idx * 1.4, repeat: Infinity, ease: "linear" }}
+              opacity={0.5}
+            />
+          </g>
+        ))}
+      </motion.svg>
+
+      <motion.svg
+        viewBox="0 0 100 60"
+        className="absolute right-[6%] top-[10%] h-[66%] w-[54%] opacity-80"
+        animate={{ x: [0, 10, 0], y: [0, -4, 0] }}
+        transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {[
+          "M 8 20 L 24 36 L 40 24 L 52 44 L 66 32 L 78 48 L 90 30",
+          "M 8 20 L 40 24 L 66 32 L 90 30",
+          "M 24 36 L 52 44 L 78 48",
+        ].map((path, idx) => (
+          <g key={path}>
+            <path d={path} stroke="rgba(71,85,105,0.46)" strokeWidth="0.5" fill="none" />
+            <motion.path
+              d={path}
+              stroke="#c8f701"
+              strokeWidth="0.72"
+              fill="none"
+              strokeDasharray="1.6 4.4"
+              animate={{ strokeDashoffset: [8, 0], opacity: [0.3, 0.88, 0.3] }}
+              transition={{ duration: 4.8 + idx * 0.7, repeat: Infinity, ease: "linear" }}
+            />
+          </g>
+        ))}
+        {nodes.map((node) => (
+          <g key={`${node.x}-${node.y}`}>
+            <circle cx={node.x} cy={node.y} r="0.85" fill="#0f172a" stroke="rgba(200,247,1,0.9)" strokeWidth="0.28" />
+            <motion.circle
+              cx={node.x}
+              cy={node.y}
+              r="0.85"
+              fill="none"
+              stroke="rgba(200,247,1,0.46)"
+              strokeWidth="0.24"
+              animate={{ r: [0.85, 2.6], opacity: [0.72, 0] }}
+              transition={{ duration: 2.8, delay: node.pulseDelay, repeat: Infinity, ease: "easeOut" }}
+            />
+          </g>
+        ))}
+      </motion.svg>
+
+      <motion.svg
+        viewBox="0 0 1000 420"
+        className="absolute inset-x-[-2%] top-[8%] h-[88%] w-[104%] opacity-95"
+        animate={{ x: [0, -8, 0], y: [0, 6, 0] }}
+        transition={{ duration: 21, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {signalWaves.map((path, idx) => (
+          <g key={path}>
+            <path d={path} stroke="rgba(71,85,105,0.28)" strokeWidth="1" fill="none" />
+            <motion.path
+              d={path}
+              stroke="#c8f701"
+              strokeWidth="1.35"
+              fill="none"
+              strokeLinecap="round"
+              strokeDasharray="6 14"
+              animate={{ strokeDashoffset: [0, -120] }}
+              transition={{ duration: 7.2 + idx * 0.9, repeat: Infinity, ease: "linear" }}
+              opacity={0.64}
+            />
+          </g>
+        ))}
+        {[86, 180, 252, 336].map((cy, idx) => (
+          <motion.circle
+            key={cy}
+            cx="-30"
+            cy={cy}
+            r="4.2"
+            fill="rgba(200,247,1,0.85)"
+            animate={{ cx: [-30, 1080], opacity: [0, 0.72, 0] }}
+            transition={{ duration: 9 + idx * 0.85, repeat: Infinity, ease: "linear", delay: idx * 1.1 }}
+          />
+        ))}
+      </motion.svg>
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-white to-slate-200 px-6 pb-24 pt-12 lg:px-10 lg:pt-14">
-        <SystemGrid className="opacity-35" />
-        <HeroWaveField strength="strong" className="opacity-100" />
-        <HeroSignalLines className="opacity-90" />
-        <HeroNetworkMatrix className="opacity-95" />
-        <TechWaveMesh className="opacity-80 mix-blend-normal" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_12%,rgba(15,23,42,0.09),transparent_40%),radial-gradient(circle_at_92%_18%,rgba(15,23,42,0.08),transparent_42%),radial-gradient(circle_at_62%_78%,rgba(148,163,184,0.2),transparent_44%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-100 to-transparent" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-200 via-slate-100 to-slate-200 px-6 pb-24 pt-12 lg:px-10 lg:pt-14">
+        <HeroOperationalBackdrop />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(255,255,255,0.58),transparent_44%),radial-gradient(circle_at_84%_18%,rgba(248,250,252,0.5),transparent_40%),linear-gradient(to_bottom,rgba(255,255,255,0.24),rgba(255,255,255,0.08))]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-100/90 via-slate-100/45 to-transparent" />
 
         <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="relative">
+            <div className="pointer-events-none absolute -inset-x-8 -inset-y-10 rounded-[2.5rem] bg-gradient-to-br from-white/70 via-white/40 to-slate-100/20 blur-2xl" />
             <motion.p
               variants={fadeUp}
-              className="mb-6 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700"
+              className="relative mb-6 inline-flex items-center gap-3 rounded-full border border-slate-300/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-[0_10px_28px_-22px_rgba(15,23,42,0.9)]"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[#c8f701]" />
               Structured procurement and energy systems
             </motion.p>
-            <motion.h1 variants={fadeUp} className="max-w-4xl text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
+            <motion.h1 variants={fadeUp} className="relative max-w-4xl text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
               Industrial Execution, Orchestrated With Precision and Systems Intelligence
             </motion.h1>
-            <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl">
+            <motion.p variants={fadeUp} className="relative mt-6 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
               Kwanza Capital Africa aligns procurement, power, and deployment operations under one disciplined operating model—
               delivering measurable continuity for organizations where downtime, delay, and compliance drift are unacceptable.
             </motion.p>
-            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
+            <motion.div variants={fadeUp} className="relative mt-10 flex flex-wrap gap-4">
               <PrimaryButton href="/contact">Request a Quote</PrimaryButton>
               <SecondaryButton href="/capabilities">View Capabilities</SecondaryButton>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <motion.div variants={fadeUp} className="relative mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {deliveryIndicators.map((indicator, index) => (
                 <motion.div
                   key={indicator.label}

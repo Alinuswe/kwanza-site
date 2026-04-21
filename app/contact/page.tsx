@@ -296,7 +296,7 @@ export default function ContactPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Quotation Request</p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">Share your quotation requirements</h2>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
-                Submit your scope and commercial context. Quotations are reviewed and routed directly to {contactDetails.email} for structured response handling.
+                Submit your scope and commercial context.
               </p>
 
               <form className="mt-6" onSubmit={handleQuoteSubmit}>

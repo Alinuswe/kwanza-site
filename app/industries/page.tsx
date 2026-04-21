@@ -47,9 +47,9 @@ export default function IndustriesPage() {
     <PageShell>
       <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white px-4 sm:px-6 pb-16 pt-8 sm:pb-20 sm:pt-10 lg:px-10">
         <SystemGrid className="opacity-35" />
-        <HeroWaveField className="opacity-70" />
-        <HeroSignalLines className="opacity-45" />
-        <TechWaveMesh className="opacity-45" />
+        <HeroWaveField className="opacity-45 sm:opacity-70" />
+        <HeroSignalLines className="opacity-25 sm:opacity-45" />
+        <TechWaveMesh className="opacity-25 sm:opacity-45" />
         <div className="relative mx-auto max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.p variants={fadeUp} className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
@@ -66,7 +66,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-4 sm:px-6 py-20 sm:py-24 lg:px-10">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             eyebrow="Core Sectors"
@@ -94,7 +94,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-4 sm:px-6 py-20 sm:py-24 lg:px-10">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <SectionHeader

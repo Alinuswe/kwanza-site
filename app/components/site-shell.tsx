@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { companyIdentity, contactDetails, footerCopy, footerCopyright, legalNav, primaryNav, siteName } from "@/app/lib/site";
+import { CookieConsentManager, COOKIE_PREFERENCES_EVENT } from "@/app/components/cookie-consent";
 import { PrimaryButton } from "@/app/components/ui";
 
 export function SiteHeader() {
@@ -151,6 +152,13 @@ export function SiteFooter() {
                 {item.label}
               </Link>
             ))}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event(COOKIE_PREFERENCES_EVENT))}
+              className="inline-flex w-fit text-left text-slate-300 transition-colors hover:text-white"
+            >
+              Cookie Preferences
+            </button>
           </div>
         </div>
       </div>
@@ -170,6 +178,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <SiteHeader />
       <main className="pt-24 sm:pt-28 md:pt-32">{children}</main>
       <SiteFooter />
+      <CookieConsentManager />
     </div>
   );
 }
